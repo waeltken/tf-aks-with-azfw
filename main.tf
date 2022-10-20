@@ -187,16 +187,27 @@ resource "azurerm_firewall_application_rule_collection" "aks" {
     ]
 
     fqdn_tags = ["AzureKubernetesService"]
+  }
 
-    # protocol {
-    #   port = "443"
-    #   type = "Https"
-    # }
+  rule {
+    name = "allowimageregistrieshub"
 
-    # protocol {
-    #   port = "80"
-    #   type = "Http"
-    # }
+    # Can be scoped to aks subnet
+    source_addresses = [
+      "*",
+    ]
+
+    protocol {
+      port = 443
+      type = "Https"
+    }
+
+    target_fqdns = [
+      "docker.io",
+      "index.docker.io",
+      "registry-1.docker.io",
+      "registry.k8s.io",
+    ]
   }
 }
 

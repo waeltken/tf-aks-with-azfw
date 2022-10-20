@@ -13,5 +13,7 @@ terraform apply
 
 az aks get-credentials -g aks-with-azfw-rg -n aks-with-azfw
 
-helm install nginx nginx-stable/nginx-ingress
+helm upgrade --install ingress-nginx ingress-nginx \
+  --repo https://kubernetes.github.io/ingress-nginx \
+  --namespace ingress-nginx --create-namespace
 ```
