@@ -1,20 +1,17 @@
-# vnet-peering
+# Terraform example for AKS with Azure Firewall
 
 Vnet peering example with two virtual machines.
 
 ## How to use
 
-Remove or set the azurerm backend.
-Have an ssh public key ready.
+Remove or set the azurerm in `backend.tf`.
+Remove or set the subscription_id in `provider.tf`.
 
 ```shell
 terraform init
 terraform apply
 
-#ssh into vm1
-ssh <20.160.55.18>
+az aks get-credentials -g aks-with-azfw-rg -n aks-with-azfw
 
-#ping vm2
-ping <172.32.1.4>
+helm install nginx nginx-stable/nginx-ingress
 ```
-
