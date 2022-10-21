@@ -1,3 +1,3 @@
-variable "internal_loadbalancer_ip" {
-  default = "172.32.1.5"
+variable "loadbalancer_ip" {
+  default = "20.76.166.203"
 }

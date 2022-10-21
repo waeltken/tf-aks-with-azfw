@@ -214,7 +214,7 @@ resource "azurerm_firewall_application_rule_collection" "aks" {
       "registry-1.docker.io",
       "registry.k8s.io",
       # Silly rule to allow AKS to pull images don't know where...
-      # "*",
+      "*",
     ]
   }
 }
@@ -243,7 +243,7 @@ resource "azurerm_firewall_nat_rule_collection" "inbound" {
 
     translated_port = 80
 
-    translated_address = var.internal_loadbalancer_ip
+    translated_address = var.loadbalancer_ip
 
     protocols = [
       "TCP",
@@ -268,7 +268,7 @@ resource "azurerm_firewall_nat_rule_collection" "inbound" {
 
     translated_port = 443
 
-    translated_address = var.internal_loadbalancer_ip
+    translated_address = var.loadbalancer_ip
 
     protocols = [
       "TCP",
