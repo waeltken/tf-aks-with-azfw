@@ -202,11 +202,19 @@ resource "azurerm_firewall_application_rule_collection" "aks" {
       type = "Https"
     }
 
+    protocol {
+      port = 80
+      type = "Http"
+    }
+
     target_fqdns = [
       "docker.io",
       "index.docker.io",
+      "auth.docker.io",
       "registry-1.docker.io",
       "registry.k8s.io",
+      # Silly rule to allow AKS to pull images don't know where...
+      # "*",
     ]
   }
 }

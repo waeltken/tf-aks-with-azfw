@@ -13,7 +13,6 @@ terraform apply
 
 az aks get-credentials -g aks-with-azfw-rg -n aks-with-azfw
 
-helm upgrade --install ingress-nginx ingress-nginx \
-  --repo https://kubernetes.github.io/ingress-nginx \
-  --namespace ingress-nginx --create-namespace
+kubectl create deployment nginx --image=nginx
+kubectl expose deployment nginx --port=80 --target-port=8000 --type=LoadBalancer
 ```
